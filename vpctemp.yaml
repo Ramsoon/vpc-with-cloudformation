@@ -17,7 +17,7 @@ Parameters:
 
 Resources:
 # VPC
-  MyVPC:
+  VPC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: !Ref VpcCidr
@@ -26,5 +26,19 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref VpcName
+  
+  internetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub "${VpcName}-IGW"
+  
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref internetGateway
 
+  
 Outputs:
