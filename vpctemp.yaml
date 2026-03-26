@@ -234,5 +234,45 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${VpcName}-EC2InstanceSG"
-
+#  output the VPC ID, Subnet IDs, Route Table IDs, NAT Gateway ID and Security Group IDs for reference
 Outputs:
+  VPCId:
+    Description: "VPC ID"
+    Value: !Ref VPC
+    Export:
+      Name: !Sub "${VpcName}-VPCId"
+  PublicSubnet1Id:
+    Description: "Public Subnet 1 ID"
+    Value: !Join [",", !Ref PublicSubnet1, !Ref PublicSubnet2]
+    Export:
+      Name: !Sub "${VpcName}-PublicSubnet1Id"
+  PrivateSubnet1Id:
+    Description: "Private Subnet 1 ID"
+    Value: !Join [",", !Ref PrivateSubnet1, !Ref PrivateSubnet2]
+    Export:
+      Name: !Sub "${VpcName}-PrivateSubnet1Id"
+  PublicRouteTableId:
+    Description: "Public Route Table ID"
+    Value: !Ref PublicRouteTable
+    Export:
+      Name: !Sub "${VpcName}-PublicRouteTableId"
+  PrivateRouteTableId:
+    Description: "Private Route Table ID"
+    Value: !Ref PrivateRouteTable
+    Export:
+      Name: !Sub "${VpcName}-PrivateRouteTableId"
+  NATGatewayId:
+    Description: "NAT Gateway ID"
+    Value: !Ref NatGateway
+    Export:
+      Name: !Sub "${VpcName}-NATGatewayId"
+  LoadBalancerSGId:
+    Description: "Load Balancer Security Group ID"
+    Value: !Ref LoadBalancerSG
+    Export:
+      Name: !Sub "${VpcName}-LoadBalancerSGId"
+  EC2InstanceSGId:
+    Description: "EC2 Instance Security Group ID"
+    Value: !Ref EC2InstanceSG
+    Export:
+      Name: !Sub "${VpcName}-EC2InstanceSGId"
