@@ -243,12 +243,12 @@ Outputs:
       Name: !Sub "${VpcName}-VPCId"
   PublicSubnet1Id:
     Description: "Public Subnet 1 ID"
-    Value: !Join [",", !Ref PublicSubnet1, !Ref PublicSubnet2]
+    Value: !Join [",", [!Ref PublicSubnet1, !Ref PublicSubnet2]]
     Export:
       Name: !Sub "${VpcName}-PublicSubnet1Id"
   PrivateSubnet1Id:
     Description: "Private Subnet 1 ID"
-    Value: !Join [",", !Ref PrivateSubnet1, !Ref PrivateSubnet2]
+    Value: !Join [",", [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]
     Export:
       Name: !Sub "${VpcName}-PrivateSubnet1Id"
   PublicRouteTableId:
